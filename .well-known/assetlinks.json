@@ -5,7 +5,7 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_nme": "com.xainatech.khataralap",
+      "package_name": "com.xainatech.khataralap",
       "sha256_cert_fingerprints": [
         "90:EE:B0:9D:6D:B5:17:CB:D5:4D:CA:9E:10:05:A3:FE:85:46:95:D2:0D:07:D1:18:18:A6:1F:A9:28:DD:D7:4E",
         "A5:08:A1:DF:9D:54:A9:48:B2:40:26:89:DE:9F:45:F6:20:E9:EA:1A:1C:C7:5B:D4:72:CB:FF:B6:86:3E:BA:B8"
