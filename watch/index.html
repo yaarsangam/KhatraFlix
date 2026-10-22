@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KhatraFlix</title>
+  <meta name="theme-color" content="#0A0A0A">
+  <meta property="og:title" content="Watch on KhatraFlix">
+  <meta property="og:description" content="Unlimited movies and TV shows">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0A0A0A;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    h1 {
+      color: #CCFF00;
+      font-size: 36px;
+      margin: 0 0 8px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 32px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 32px auto 24px;
+      border: 3px solid #222;
+      border-top-color: #CCFF00;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    p {
+      color: #AAAAAA;
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 340px;
+      margin: 8px 0;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 24px;
+      background: #CCFF00;
+      color: #000;
+      padding: 14px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.15s;
+    }
+    .button:hover { transform: scale(1.03); }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>KHATRAFLIX</h1>
+  <div class="subtitle">Stream Anytime</div>
+
+  <div class="spinner" id="spinner"></div>
+
+  <p id="loading">Opening the app…</p>
+
+  <div id="fallback" class="hidden">
+    <p>It looks like you don't have the KhatraFlix app installed.</p>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.xainatech.khataralap">
+      Get it on Play Store
+    </a>
+  </div>
+
+  <script>
+    (function() {
+      // Grab the current query string (?tmdbId=550&type=movie&title=Fight+Club)
+      var params = window.location.search;
+
+      // Attempt to open the app. If the app is installed, Android intercepts
+      // this and the page stops here. If not, the browser stays on this page.
+      window.location.href = "khatraflix://watch" + params;
+
+      // After 1.5s, if we're still here, the app isn't installed.
+      setTimeout(function() {
+        document.getElementById("spinner").classList.add("hidden");
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("fallback").classList.remove("hidden");
+      }, 1500);
+    })();
+  </script>
+
+</body>
+</html>
